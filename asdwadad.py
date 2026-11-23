@@ -5,7 +5,8 @@ import tkinter as tk
 
 # felix
 
-#aroa
+#aroa2
+
 
 
 # 1. Creamos la ventana principal
