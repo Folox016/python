@@ -1,11 +1,11 @@
 
 import tkinter as tk
 
-##claudia
+## claudia
 
 # felix
 
-#aroa
+# aroa
 
 
 # 1. Creamos la ventana principal
@@ -42,48 +42,57 @@ personaje = canvas.create_image(
     image=imagen_personaje
 )
 
-# 7. Variables de animación
+# 6. Variables de animación
 animacion_activa = False
+
+# 7. Límites del mapa
+limite_izquierda = 30
+limite_derecha = 994
+limite_arriba = 30
+limite_abajo = 994
 
 # 8. Función para mover y animar al personaje
 def mover_izquierda(event):
 
     global animacion_activa
 
-    # Movemos al personaje hacia la izquierda
-    canvas.move(personaje, -10, 0)
+    x, y = canvas.coords(personaje)
 
-    # Cambiamos la imagen para simular que camina
+    if x > limite_izquierda:
+        canvas.move(personaje, -10, 0)
+
     canvas.itemconfig(personaje, image=imagen_personaje8)
 
-    # Evitamos que se acumulen animaciones
     if not animacion_activa:
         animacion_activa = True
         ventana_madre.after(200, volver_izquierda)
+
 
 def mover_derecha(event):
 
     global animacion_activa
 
-    # Movemos al personaje hacia la izquierda
-    canvas.move(personaje, 10, 0)
+    x, y = canvas.coords(personaje)
 
-    # Cambiamos la imagen para simular que camina
+    if x < limite_derecha:
+        canvas.move(personaje, 10, 0)
+
     canvas.itemconfig(personaje, image=imagen_personaje6)
 
-    # Evitamos que se acumulen animaciones
     if not animacion_activa:
         animacion_activa = True
         ventana_madre.after(200, volver_derecha)
+
 
 def mover_arriba(event):
 
     global animacion_activa
 
-    # Movemos al personaje hacia arriba
-    canvas.move(personaje, 0, -10)
+    x, y = canvas.coords(personaje)
 
-    # Cambiamos la imagen para simular que camina
+    if y > limite_arriba:
+        canvas.move(personaje, 0, -10)
+
     canvas.itemconfig(personaje, image=imagen_personaje4)
 
     if not animacion_activa:
@@ -95,15 +104,17 @@ def mover_abajo(event):
 
     global animacion_activa
 
-    # Movemos al personaje hacia abajo
-    canvas.move(personaje, 0, 10)
+    x, y = canvas.coords(personaje)
 
-    # Cambiamos la imagen para simular que camina
+    if y < limite_abajo:
+        canvas.move(personaje, 0, 10)
+
     canvas.itemconfig(personaje, image=imagen_personaje2)
 
     if not animacion_activa:
         animacion_activa = True
         ventana_madre.after(200, volver_normal)
+
 
 # 9. Volvemos a la imagen original
 def volver_normal():
@@ -113,12 +124,14 @@ def volver_normal():
     canvas.itemconfig(personaje, image=imagen_personaje)
     animacion_activa = False
 
+
 def volver_atras():
 
     global animacion_activa
 
     canvas.itemconfig(personaje, image=imagen_personaje3)
     animacion_activa = False
+
 
 def volver_derecha():
 
@@ -127,6 +140,7 @@ def volver_derecha():
     canvas.itemconfig(personaje, image=imagen_personaje5)
     animacion_activa = False
 
+
 def volver_izquierda():
 
     global animacion_activa
@@ -134,7 +148,8 @@ def volver_izquierda():
     canvas.itemconfig(personaje, image=imagen_personaje7)
     animacion_activa = False
 
-# 10. Vinculamos la tecla espacio
+
+# 10. Vinculamos las teclas
 ventana_madre.bind("<a>", mover_izquierda)
 ventana_madre.bind("<d>", mover_derecha)
 ventana_madre.bind("<w>", mover_arriba)
