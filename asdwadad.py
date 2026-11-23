@@ -1,6 +1,9 @@
 
 import tkinter as tk
 
+##claudia
+
+
 # 1. Creamos la ventana principal
 ventana_madre = tk.Tk()
 ventana_madre.title("Aplicación Principal con Fondo")
