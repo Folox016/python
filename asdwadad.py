@@ -5,6 +5,8 @@ import tkinter as tk
 
 # felix
 
+#aroa
+
 
 # 1. Creamos la ventana principal
 ventana_madre = tk.Tk()
