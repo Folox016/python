@@ -10,10 +10,10 @@ import tkinter as tk
 
 # 1. Creamos la ventana principal
 ventana_madre = tk.Tk()
-ventana_madre.title("Aplicación Principal con Fondo")
+ventana_madre.title("cult")
 ventana_madre.geometry("1024x1024")
 ventana_madre.resizable(False, False)
-
+    
 # 2. Cargamos las imágenes
 imagen_fondo = tk.PhotoImage(file="imatge1.png")
 imagen_personaje = tk.PhotoImage(file="personaje.png")
